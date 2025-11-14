@@ -1,0 +1,72 @@
+<idea-plugin>
+    <id>com.kivojenko.plugin.dovlatov</id>
+    <name>Dovlatov Highlights</name>
+    <vendor email="kivojenko@gmail.com">Ksenija Kivojenko</vendor>
+
+    <description><![CDATA[
+<p>Bring discipline to your writing — the way Sergei Dovlatov did.</p>
+
+<p>
+  Russian writer Sergei Dovlatov avoided using words that start with the same letter within a single sentence.
+  This constraint helped him keep prose sharp and free of empty repetition. This plugin brings that principle into your editor.
+</p>
+
+<h3>What It Does</h3>
+<ul>
+  <li>Analyzes text files in real time.</li>
+  <li>Splits text into phrases by <code>.</code>, <code>!</code>, <code>?</code>, <code>;</code> and <code>"</code>.</li>
+  <li>Considers only words longer than three letters.</li>
+  <li>Highlights words that start with the same letter in the same phrase.</li>
+  <li>Scales color intensity by the share of words in the phrase that start with that letter
+      (more dominance → brighter color).</li>
+</ul>
+
+<h3>Why</h3>
+<p>
+  The Dovlatov principle exposes repetition and tightens sentences. You will see patterns that bloat rhythm and clarity, and revise faster.
+</p>
+
+<h3>Works With</h3>
+<ul>
+  <li>Plain text</li>
+  <li>Most alphabets</li>
+  <li>Full Unicode support</li>
+</ul>
+
+<h3>Ideal For</h3>
+<p>Writers, editors, and translators who want to avoid monotony and enforce stylistic discipline.</p>
+
+<h3>How to use</h3>
+<ul>
+  <li>Toggle per-file on/off via the editor context menu</li>
+  <li>Right‑click in editor → "Toggle Dovlatov Annotator".</li>
+</ul>
+
+    ]]></description>
+
+    <change-notes>
+        <![CDATA[
+        <ul>
+            <li>1.0.0: Initial release</li>
+        </ul>
+        ]]>
+    </change-notes>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <annotator language="TEXT" implementationClass="com.kivojenko.plugin.dovlatov.DovlatovAnnotator"/>
+
+    </extensions>
+
+    <actions>
+        <action id="Dovlatov.ToggleFile"
+                class="com.kivojenko.plugin.dovlatov.ToggleFileAction"
+                text="Toggle Dovlatov Annotator"
+                description="Enable or disable Dovlatov annotator for this file">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+
+        </action>
+    </actions>
+</idea-plugin>
